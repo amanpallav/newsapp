@@ -1,23 +1,22 @@
-import { getByTitle } from '@testing-library/react'
 import React, { Component } from 'react'
 
-export default class Newsitem extends Component {
-  render() {
-    let {title,description,imageUrl,newsUrl} = this.props;
+const Newsitem = (props) => {
+
+    let {title,description,imageUrl,newsUrl} = props;
     return (
-      <div>
+      <div className='my-3'>
         <div className="card" style={{width: '18rem'}}>
-          <img src={this.props.imageUrl} className="card-img-top" alt="..."/>
+          <img src={imageUrl} className="card-img-top" alt="..."/>
             <div className="card-body">
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
-              <p className='card-text'><small className='text-muted'>By {this.props.author} on {this.props.date}</small></p>
-              <a href={newsUrl} className="btn btn-primary btn-sm">Read more</a>
-
+              <p className='card-text'> <small className="text-muted">By {props.author} on {new Date(props.date).toDateString()}</small></p>
+              <a href={newsUrl} className="btn btn-dark btn-sm">Read More</a>
             </div>
         </div>
       </div>
     )
   }
-}
 
+
+export default Newsitem
