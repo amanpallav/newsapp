@@ -17,7 +17,7 @@ const News = (props) => {
       let parsedData = await data.json();
       console.log(parsedData);
       setArticles(parsedData.articles);
-      setLoading(false)
+      setLoading(false);
     }
     updateNews();
   }, [])
@@ -54,7 +54,7 @@ const News = (props) => {
       <h1 className='text-center'>NewsMonkey: Top Headlines from {props.category}</h1>
       {loading && <Spinner />}
       <div className="row">
-        {!loading && articles.map((element) => {
+        {!loading && (articles || []).map((element ) => {
           return <div className="col-md-3" key={element.url}>
             <Newsitem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
           </div>
